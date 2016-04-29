@@ -55,6 +55,9 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
         //Get instance of the DB
         dbHelper = AndroidPOSDBHelper.getInstance(this);
 
+        //Set the title
+        setTitle(getString(R.string.emp_management_activity_title));
+
         //EditText fields
         editEmpId = (EditText) findViewById(R.id.editEmpId);
         editEmpFName = (EditText) findViewById(R.id.editEmpFName);

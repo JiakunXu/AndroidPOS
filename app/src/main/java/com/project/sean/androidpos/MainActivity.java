@@ -44,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
         // Session class instance
         session = new UserSessionManager(getApplicationContext());
 
+        //Set the title
+        setTitle(getString(R.string.main_menu_activity_title));
+
         TextView lblName = (TextView) findViewById(R.id.lblName);
         TextView lblRole = (TextView) findViewById(R.id.lblRole);
 
@@ -83,10 +86,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View arg0) {
-
                 // Clear the User session data
                 // and redirect user to LoginActivity
                 session.logoutUser();
@@ -98,16 +99,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View arg0) {
                 if (role.equals("Manager") || role.equals("Employee")) {
-                    Toast.makeText(getApplicationContext(), "This is Checkout!",
-                            Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, CheckoutActivity.class);
+                    startActivity(intent);
                 }
             }
         });
 
         btnStockCheck.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, StockCheckActivity.class);
+            public void onClick(View arg0) {
+                if (role.equals("Manager") || role.equals("Employee")) {
+                    Intent intent = new Intent(MainActivity.this, StockCheckActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
@@ -115,8 +119,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View arg0) {
                 if(role.equals("Manager")) {
-                    Toast.makeText(getApplicationContext(), "This is stock management!",
-                            Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this, StockManagementActivity.class);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), "Invalid role, manager access only",
                             Toast.LENGTH_SHORT).show();

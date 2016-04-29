@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.project.sean.androidpos.Database.AndroidPOSDBHelper;
 
 /**
+ * This activity handles the settings for the application such as
+ * backing up the database.
  * Created by Sean on 29/04/2016.
  */
 public class SettingActivity extends AppCompatActivity {
@@ -16,8 +18,8 @@ public class SettingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_emp_management);
-
+        setContentView(R.layout.activity_settings);
+        setTitle(getString(R.string.setting_activity_title));
         //Get instance of the DB
         dbHelper = AndroidPOSDBHelper.getInstance(this);
 
