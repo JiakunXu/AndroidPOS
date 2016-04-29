@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="Stock ID:"
+        android:text="@string/listview_stock_info_stock_id"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/Black" />
 
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
-        android:text="Name:"
+        android:text="@string/listview_stock_info_stock_name"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/Black" />
 
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView2"
         android:layout_below="@+id/textView2"
-        android:text="Category:"
+        android:text="@string/listview_stock_info_stock_cat"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/Black" />
 
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView3"
         android:layout_below="@+id/textView3"
-        android:text="Sale Price:"
+        android:text="@string/listview_stock_info_stock_sale_price"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/Black" />
 
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView4"
         android:layout_below="@+id/textView4"
-        android:text="Cost Price:"
+        android:text="@string/listview_stock_info_stock_cost"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/Black" />
 

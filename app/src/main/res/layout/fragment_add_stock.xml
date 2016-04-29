@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Stock ID:"
+                android:text="@string/add_stock_fragment_stock_id"
                 android:layout_above="@+id/editStockID"
                 android:layout_toLeftOf="@+id/editStockID"
                 android:layout_toStartOf="@+id/editStockID"
@@ -43,7 +43,7 @@
                     android:layout_alignEnd="@+id/scan_format"
                     android:inputType="number"
                     android:ems="10"
-                    android:hint="Enter the Stock ID here..."/>
+                    android:hint="@string/add_stock_fragment_stock_id_hint"/>
 
                 <Button
                     android:id="@+id/scan_button"
@@ -59,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Stock Name:"
+                android:text="@string/add_stock_fragment_stock_name"
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -74,7 +74,7 @@
                 android:layout_alignStart="@+id/editStockID"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:hint="Enter the Stock Name here..."
+                android:hint="@string/add_stock_fragment_stock_name_hint"
                 android:singleLine="true" />
 
             <TextView
@@ -82,7 +82,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Sale Price:"
+                android:text="@string/add_stock_fragment_stock_item_price"
                 android:layout_below="@+id/editItemName"
                 android:layout_alignRight="@+id/tvItemName"
                 android:layout_alignEnd="@+id/tvItemName"
@@ -94,14 +94,14 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:ems="10"
-                android:hint="Enter the Sale Price here..."/>
+                android:hint="@string/add_stock_fragment_stock_item_price_hint"/>
 
             <TextView
                 android:id="@+id/tvStockCost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Stock Cost:"
+                android:text="@string/add_stock_fragment_stock_cost"
                 android:textColor="@color/Black"/>
 
             <EditText
@@ -110,14 +110,14 @@
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal"
                 android:ems="10"
-                android:hint="Enter the Stock Cost here..."/>
+                android:hint="@string/add_stock_fragment_stock_cost_hint"/>
 
             <TextView
                 android:id="@+id/tvStockQuantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Stock Quantity:"
+                android:text="@string/add_stock_fragment_stock_qty"
                 android:textColor="@color/Black"/>
 
             <EditText
@@ -126,21 +126,21 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="10"
-                android:hint="Enter the Stock Quantity here..."/>
+                android:hint="@string/add_stock_fragment_stock_qty_hint"/>
 
             <TextView
                 android:id="@+id/tvStockCategory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Stock Category:"
+                android:text="@string/add_stock_fragment_stock_cat"
                 android:textColor="@color/Black"/>
 
             <EditText
                 android:id="@+id/editCategory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter the Category here..."
+                android:hint="@string/add_stock_fragment_stock_cat_hint"
                 android:singleLine="true" />
 
             <LinearLayout
@@ -153,7 +153,7 @@
                     android:id="@+id/button_add"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Add Item" />
+                    android:text="@string/add_stock_fragment_button_add_item" />
             </LinearLayout>
 
         </LinearLayout>

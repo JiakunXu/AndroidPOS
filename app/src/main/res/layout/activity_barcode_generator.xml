@@ -11,7 +11,7 @@
         android:paddingTop="5dp"
         android:paddingLeft="1dp"
         android:textColor="#000000"
-        android:text="EAN code:" />
+        android:text="@string/barcode_gen_tv_ean_code" />
 
     <EditText
         android:id ="@+id/etBarcode"
@@ -20,24 +20,25 @@
         android:typeface="serif"
         android:maxLength="12"
         android:inputType="number"
-        android:hint="Enter code here..." />
+        android:hint="@string/barcode_gen_edit_barcode_hint" />
 
     <Button
         android:id="@+id/btn_create"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Create Barcode" />
+        android:text="@string/barcode_gen_button_create_barcode" />
 
     <Button
         android:id="@+id/btn_image"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Create Image" />
+        android:text="@string/barcode_gen_button_save_image" />
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
 
         <TextView
             android:id="@+id/barcode"
