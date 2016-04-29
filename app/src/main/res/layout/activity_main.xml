@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dip">
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1"
+            android:layout_marginBottom="15dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1.12">
+
+                <TextView
+                    android:id="@+id/lblName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dip"
+                    android:layout_marginTop="5dip"
+                    android:singleLine="true"
+                    android:text="Name"/>
+
+                <TextView
+                    android:id="@+id/lblRole"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dip"
+                    android:singleLine="true"
+                    android:text="Role"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="185dp"
+                android:layout_height="wrap_content"
+                android:text="@string/main_menu_button_logout"
+                android:layout_marginBottom="30dp" />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/btnCheckout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_menu_button_checkout"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/btnStockCheck"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_menu_button_stock_check"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/btnStockManagement"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_menu_button_stock_management"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/btnEmpManagement"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_menu_button_employee_management"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/btnBarcodeGen"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_menu_button_barcode_gen"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_menu_button_settings"
+            android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+</ScrollView>

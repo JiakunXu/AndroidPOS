@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:background="#eeeeee">
+
+    <TableRow
+        android:background="@drawable/cell_shape_white">
+        <TextView
+            android:id="@+id/df1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/emp_dialog_emp_id"
+            android:textColor="@color/Black"
+            android:layout_column="1"
+            android:background="@drawable/cell_shape"
+            android:padding="4dp" />
+        <TextView
+            android:id="@+id/diEmpId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:paddingLeft="15dp" />
+    </TableRow>
+    <TableRow
+        android:background="@drawable/cell_shape_white">
+        <TextView
+            android:id="@+id/df2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/emp_dialog_emp_fname"
+            android:textColor="@color/Black"
+            android:layout_column="1"
+            android:background="@drawable/cell_shape"
+            android:padding="4dp" />
+        <TextView
+            android:id="@+id/diEmpFName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:paddingLeft="15dp" />
+    </TableRow>
+    <TableRow
+        android:background="@drawable/cell_shape_white">
+        <TextView
+            android:id="@+id/df3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/emp_dialog_emp_lname"
+            android:textColor="@color/Black"
+            android:layout_column="1"
+            android:background="@drawable/cell_shape"
+            android:padding="4dp"/>
+        <TextView
+            android:id="@+id/diEmpLName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:paddingLeft="15dp" />
+    </TableRow>
+    <TableRow
+        android:background="@drawable/cell_shape_white">
+        <TextView
+            android:id="@+id/df4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/emp_dialog_emp_role"
+            android:textColor="@color/Black"
+            android:layout_column="1"
+            android:background="@drawable/cell_shape"
+            android:padding="4dp"/>
+        <TextView
+            android:id="@+id/diEmpRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:paddingLeft="15dp" />
+    </TableRow>
+    <TableRow
+        android:background="@drawable/cell_shape_white">
+        <TextView
+            android:id="@+id/df5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/emp_dialog_emp_contact"
+            android:textColor="@color/Black"
+            android:layout_column="1"
+            android:background="@drawable/cell_shape"
+            android:padding="4dp"/>
+        <TextView
+            android:id="@+id/diContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:paddingLeft="15dp" />
+    </TableRow>
+    <TableRow
+        android:background="@drawable/cell_shape_white">
+        <TextView
+            android:id="@+id/df6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/emp_dialog_emp_password"
+            android:textColor="@color/Black"
+            android:layout_column="1"
+            android:background="@drawable/cell_shape"
+            android:padding="4dp"/>
+        <TextView
+            android:id="@+id/diPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:paddingLeft="15dp" />
+    </TableRow>
+
+</TableLayout>

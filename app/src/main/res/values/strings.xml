@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">Android POS</string>
+
+    <string name="empDialogTitle">Employee List</string>
+
+    <!-- Employee Management Strings -->
+    <string name="emp_management_emp_id">Employee ID:</string>
+    <string name="emp_management_emp_id_hint">Enter the Employee ID here…</string>
+    <string name="emp_management_emp_fname">First Name:</string>
+    <string name="emp_management_emp_fname_hint">Enter the First Name here…</string>
+    <string name="emp_management_emp_lname">Last Name:</string>
+    <string name="emp_management_emp_lname_hint">Enter the Last Name here…</string>
+    <string name="emp_management_emp_role">Role:</string>
+    <string name="emp_management_emp_role_hint">Enter the Role here…</string>
+    <string name="emp_management_emp_contact_hint">Enter the Contact Number here…</string>
+    <string name="emp_management_emp_contact">Contact No:</string>
+    <string name="emp_management_emp_password">Password:</string>
+    <string name="emp_management_emp_password_hint">Enter the Password here…</string>
+
+    <string name="emp_management_button_add_emp">Add Details</string>
+    <string name="emp_management_button_update_emp">Update Details</string>
+    <string name="emp_management_button_get_details">Get Details</string>
+    <string name="emp_management_button_delete_emp">Delete Employee</string>
+    <string name="emp_management_button_view_all">View All Employees</string>
+
+    <!-- Employee Dialog Strings -->
+    <string name="emp_dialog_emp_id">Emp. ID:</string>
+    <string name="emp_dialog_emp_fname">First Name:</string>
+    <string name="emp_dialog_emp_lname">Last Name:</string>
+    <string name="emp_dialog_emp_role">Role:</string>
+    <string name="emp_dialog_emp_contact">Contact No:</string>
+    <string name="emp_dialog_emp_password">Password:</string>
+
+    <!-- Main Menu Strings -->
+    <string name="main_menu_button_logout">Logout</string>
+    <string name="main_menu_button_stock_management">Stock Management</string>
+    <string name="main_menu_button_checkout">Checkout</string>
+    <string name="main_menu_button_employee_management">Employee Management</string>
+    <string name="main_menu_button_stock_check">Check Stock</string>
+    <string name="main_menu_button_barcode_gen">Barcode Generator</string>
+    <string name="main_menu_button_settings">Settings</string>
+    <!-- Login Page Strings -->
+    <string name="login_page_emp_id">Employee ID:</string>
+    <string name="login_page_emp_password">Password:</string>
+    <string name="login_page_button_login">Login</string>
+
+
+
+</resources>
