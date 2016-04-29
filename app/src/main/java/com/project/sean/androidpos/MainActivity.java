@@ -22,18 +22,19 @@ public class MainActivity extends AppCompatActivity {
 
     // Button Logout
     Button btnLogout;
-    //Button stock management
-    Button btnStockManagement;
     //Button checkout
     Button btnCheckout;
-    //Button employee management
-    Button btnEmpManagement;
     //Button stock check
     Button btnStockCheck;
+    //Button stock management
+    Button btnStockManagement;
+    //Button employee management
+    Button btnEmpManagement;
     //Button barcode generator
     Button btnBarcodeGen;
     //Button settings
     Button btnSettings;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,12 +51,12 @@ public class MainActivity extends AppCompatActivity {
         btnLogout = (Button) findViewById(R.id.btnLogout);
         //Button checkout
         btnCheckout = (Button) findViewById(R.id.btnCheckout);
+        //Button stock check
+        btnStockCheck = (Button) findViewById(R.id.btnStockCheck);
         //Button stock management
         btnStockManagement = (Button) findViewById(R.id.btnStockManagement);
         //Button employee management
         btnEmpManagement = (Button) findViewById(R.id.btnEmpManagement);
-        //Button stock check
-        btnStockCheck = (Button) findViewById(R.id.btnStockCheck);
         //Button barcode generator
         btnBarcodeGen = (Button) findViewById(R.id.btnBarcodeGen);
         //Button settings

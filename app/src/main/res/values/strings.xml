@@ -22,6 +22,11 @@
     <string name="emp_management_button_get_details">Get Details</string>
     <string name="emp_management_button_delete_emp">Delete Employee</string>
     <string name="emp_management_button_view_all">View All Employees</string>
+    
+    <string-array name="empRole">
+        <item>Employee</item>
+        <item>Manager</item>
+    </string-array>
 
     <!-- Employee Dialog Strings -->
     <string name="emp_dialog_emp_id">Emp. ID:</string>

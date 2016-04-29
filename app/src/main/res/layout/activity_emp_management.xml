@@ -97,13 +97,12 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/Black" />
 
-        <EditText
-            android:id="@+id/editEmpRole"
+        <Spinner
+            android:id="@+id/spinnerRole"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/emp_management_emp_role_hint"
-            android:singleLine="true" />
+            android:entries="@array/empRole"
+            android:prompt="@string/emp_management_emp_role_hint"/>
 
         <TextView
             android:id="@+id/tvEmpContact"

@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.project.sean.androidpos.Database.AndroidPOSDBHelper;
@@ -41,9 +42,10 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
     private EditText editEmpId;
     private EditText editEmpFName;
     private EditText editEmpLName;
-    private EditText editEmpRole;
     private EditText editContactNumber;
     private EditText editPassword;
+
+    Spinner spinnerRole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +59,11 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
         editEmpId = (EditText) findViewById(R.id.editEmpId);
         editEmpFName = (EditText) findViewById(R.id.editEmpFName);
         editEmpLName = (EditText) findViewById(R.id.editEmpLName);
-        editEmpRole = (EditText) findViewById(R.id.editEmpRole);
         editContactNumber = (EditText) findViewById(R.id.editContactNumber);
         editPassword = (EditText) findViewById(R.id.editPassword);
+
+        //Spinner field
+        spinnerRole = (Spinner) findViewById(R.id.spinnerRole);
 
         //Buttons
         button_add_emp = (Button) findViewById(R.id.button_add_emp);
@@ -109,7 +113,8 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
         if(!isEmpty(editEmpId) &&
                 !isEmpty(editEmpFName) &&
                 !isEmpty(editEmpLName) &&
-                !isEmpty(editEmpRole) &&
+                spinnerRole != null &&
+                spinnerRole.getSelectedItem() != null &&
                 !isEmpty(editContactNumber) &&
                 !isEmpty(editPassword)) {
 
@@ -120,7 +125,8 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
                 empInfo.setEmpId(Integer.parseInt(editEmpId.getText().toString()));
                 empInfo.setEmpFName(editEmpFName.getText().toString());
                 empInfo.setEmpLName(editEmpLName.getText().toString());
-                empInfo.setRole(editEmpRole.getText().toString());
+                empInfo.setRole(spinnerRole.getSelectedItem().toString());
+                //empInfo.setRole(editEmpRole.getText().toString());
                 empInfo.setContactNo(editContactNumber.getText().toString());
                 empInfo.setPassword(editPassword.getText().toString());
 
@@ -131,7 +137,7 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
                     editEmpId.getText().clear();
                     editEmpFName.getText().clear();
                     editEmpLName.getText().clear();
-                    editEmpRole.getText().clear();
+                    spinnerRole.setSelection(0);
                     editContactNumber.getText().clear();
                     editPassword.getText().clear();
                 } else {
@@ -218,7 +224,8 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
         if(!isEmpty(editEmpId) &&
                 !isEmpty(editEmpFName) &&
                 !isEmpty(editEmpLName) &&
-                !isEmpty(editEmpRole) &&
+                spinnerRole != null &&
+                spinnerRole.getSelectedItem() != null &&
                 !isEmpty(editContactNumber) &&
                 !isEmpty(editPassword)) {
 
@@ -229,7 +236,7 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
                 empInfo.setEmpId(Integer.parseInt(editEmpId.getText().toString()));
                 empInfo.setEmpFName(editEmpFName.getText().toString());
                 empInfo.setEmpLName(editEmpLName.getText().toString());
-                empInfo.setRole(editEmpRole.getText().toString());
+                empInfo.setRole(spinnerRole.getSelectedItem().toString());
                 empInfo.setContactNo(editContactNumber.getText().toString());
                 empInfo.setPassword(editPassword.getText().toString());
 
@@ -240,7 +247,7 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
                     editEmpId.getText().clear();
                     editEmpFName.getText().clear();
                     editEmpLName.getText().clear();
-                    editEmpRole.getText().clear();
+                    spinnerRole.setSelection(0);
                     editContactNumber.getText().clear();
                     editPassword.getText().clear();
                 } else {
@@ -266,7 +273,12 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
                 editEmpId.setText(Integer.toString(result.getInt(0)));
                 editEmpFName.setText(result.getString(1));
                 editEmpLName.setText(result.getString(2));
-                editEmpRole.setText(result.getString(3));
+                String role = result.getString(3);
+                if (role.equals("Employee")) {
+                    spinnerRole.setSelection(0);
+                } else if (role.equals("Manager")) {
+                    spinnerRole.setSelection(1);
+                }
                 editContactNumber.setText(result.getString(4));
                 editPassword.setText(result.getString(5));
 
