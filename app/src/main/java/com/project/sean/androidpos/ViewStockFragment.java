@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.project.sean.androidpos.Database.AndroidPOSDBHelper;
 import com.project.sean.androidpos.Database.StockInfo;
@@ -167,9 +166,9 @@ public class ViewStockFragment extends Fragment implements SearchView.OnQueryTex
             super(itemView);
             itemView.setOnClickListener(this);
             //Add the UI elements here
-            tvStockID = (TextView) itemView.findViewById(R.id.tvStockID);
-            tvStockName = (TextView) itemView.findViewById(R.id.tvStockName);
-            tvCategory = (TextView) itemView.findViewById(R.id.tvCategory);
+            tvStockID = (TextView) itemView.findViewById(R.id.tvSCStockID);
+            tvStockName = (TextView) itemView.findViewById(R.id.tvSCStockName);
+            tvCategory = (TextView) itemView.findViewById(R.id.tvSCCategory);
             tvSalePrice = (TextView) itemView.findViewById(R.id.tvSalePrice);
             tvCostPrice = (TextView) itemView.findViewById(R.id.tvCostPrice);
         }

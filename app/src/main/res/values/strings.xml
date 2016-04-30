@@ -4,6 +4,8 @@
 
     <string name="empDialogTitle">Employee List</string>
 
+    <string name="default_text_view">TextView</string>
+
     <!-- Employee Management Strings -->
     <string name="emp_management_activity_title">Employee Management</string>
     <string name="emp_management_emp_id">Employee ID:</string>
@@ -76,34 +78,40 @@
 
     <!-- Stock Check Strings -->
     <string name="stock_check_activity_title">Check Stock</string>
+    <string name="listview_stock_check_stock_id">Stock ID:</string>
+    <string name="listview_stock_check_stock_name">Name:</string>
+    <string name="listview_stock_check_stock_cat">Category:</string>
+    <string name="listview_stock_check_sale_price">Sale Price (£):</string>
+    <string name="listview_stock_check_stock_qty">Stock Qty:</string>
 
     <!-- Add Stock Fragment Strings -->
     <string name="add_stock_fragment_stock_id">Stock ID:</string>
-    <string name="add_stock_fragment_stock_id_hint">Enter the Stock ID here...</string>
+    <string name="add_stock_fragment_stock_id_hint">Enter the Stock ID here…</string>
     <string name="add_stock_fragment_stock_name">Stock Name:</string>
-    <string name="add_stock_fragment_stock_name_hint">Enter the Stock Name here...</string>
-    <string name="add_stock_fragment_stock_item_price">Sale Price:</string>
-    <string name="add_stock_fragment_stock_item_price_hint">Enter the Sale Price here...</string>
-    <string name="add_stock_fragment_stock_cost">Stock Cost:</string>
-    <string name="add_stock_fragment_stock_cost_hint">Enter the Stock Cost here...</string>
+    <string name="add_stock_fragment_stock_name_hint">Enter the Stock Name here…</string>
+    <string name="add_stock_fragment_stock_item_price">Sale Price (£):</string>
+    <string name="add_stock_fragment_stock_item_price_hint">Enter the Sale Price here…</string>
+    <string name="add_stock_fragment_stock_cost">Stock Cost (£):</string>
+    <string name="add_stock_fragment_stock_cost_hint">Enter the Stock Cost here…</string>
     <string name="add_stock_fragment_stock_qty">Stock Quantity:</string>
-    <string name="add_stock_fragment_stock_qty_hint">Enter the Stock Quantity here...</string>
+    <string name="add_stock_fragment_stock_qty_hint">Enter the Stock Quantity here…</string>
     <string name="add_stock_fragment_stock_cat">Stock Category:</string>
-    <string name="add_stock_fragment_stock_cat_hint">Enter the Category here...</string>
+    <string name="add_stock_fragment_stock_cat_hint">Enter the Category here…</string>
     <string name="add_stock_fragment_button_add_item">Add Item</string>
 
     <!-- Stock Info Strings -->
     <string name="listview_stock_info_stock_id">Stock ID:</string>
     <string name="listview_stock_info_stock_name">Name:</string>
     <string name="listview_stock_info_stock_cat">Category:</string>
-    <string name="listview_stock_info_stock_sale_price">Sale Price:</string>
-    <string name="listview_stock_info_stock_cost">Cost Price:</string>
+    <string name="listview_stock_info_stock_sale_price">Sale Price (£):</string>
+    <string name="listview_stock_info_stock_cost">Cost Price (£):</string>
 
     <!-- Stock Level Strings -->
     <string name="listview_stock_level_stock_id">Stock ID:</string>
     <string name="listview_stock_level_stock_name">Name:</string>
     <string name="listview_stock_level_stock_qty">Stock Qty:</string>
-    <!-- New Strings -->
 
+
+    <!-- New Strings -->
 
 </resources>

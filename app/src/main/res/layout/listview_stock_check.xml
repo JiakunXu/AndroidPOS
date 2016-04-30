@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="@string/listview_stock_info_stock_id"
+        android:text="@string/listview_stock_check_stock_id"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/Black" />
 
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvSC1"
         android:layout_below="@+id/tvSC1"
-        android:text="@string/listview_stock_info_stock_name"
+        android:text="@string/listview_stock_check_stock_name"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/Black" />
 
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvSC2"
         android:layout_below="@+id/tvSC2"
-        android:text="@string/listview_stock_info_stock_cat"
+        android:text="@string/listview_stock_check_stock_cat"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/Black" />
 
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvSC3"
         android:layout_below="@+id/tvSC3"
-        android:text="@string/listview_stock_info_stock_sale_price"
+        android:text="@string/listview_stock_check_sale_price"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/Black" />
 
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tvSC4"
         android:layout_below="@+id/tvSC4"
-        android:text="@string/listview_stock_info_stock_cost"
+        android:text="@string/listview_stock_check_stock_qty"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/Black" />
 
@@ -65,18 +65,17 @@
         android:id="@+id/tvSCStockID"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/default_text_view"
         android:layout_alignBottom="@+id/tvSC1"
-        android:layout_toRightOf="@+id/tvSC5"
-        android:layout_toEndOf="@+id/tvSC5"
-        android:layout_marginLeft="18dp"
-        android:layout_marginStart="24dp" />
+        android:layout_toRightOf="@+id/tvSC4"
+        android:layout_toEndOf="@+id/tvSC4"
+        android:layout_marginLeft="18dp" />
 
     <TextView
         android:id="@+id/tvSCStockName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/default_text_view"
         android:layout_above="@+id/tvSC3"
         android:layout_alignLeft="@+id/tvSCStockID"
         android:layout_alignStart="@+id/tvSCStockID" />
@@ -85,27 +84,27 @@
         android:id="@+id/tvSCCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/default_text_view"
         android:layout_alignBottom="@+id/tvSC3"
         android:layout_alignLeft="@+id/tvSCStockName"
         android:layout_alignStart="@+id/tvSCStockName" />
 
     <TextView
-        android:id="@+id/tvSalePrice"
+        android:id="@+id/tvSCSalePrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/tvSC4"
         android:layout_alignBottom="@+id/tvSC4"
         android:layout_alignLeft="@+id/tvSCCategory"
-        android:text="TextView" />
+        android:text="@string/default_text_view" />
 
     <TextView
-        android:id="@+id/tvCostPrice"
+        android:id="@+id/tvSCStockQty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/tvSC5"
         android:layout_alignBottom="@+id/tvSC5"
         android:layout_alignLeft="@+id/tvSCCategory"
-        android:text="TextView" />
+        android:text="@string/default_text_view" />
 
 </RelativeLayout>
