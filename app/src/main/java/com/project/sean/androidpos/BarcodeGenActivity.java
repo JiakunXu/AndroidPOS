@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.project.sean.androidpos.Database.AndroidPOSDBHelper;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -25,6 +27,9 @@ public class BarcodeGenActivity extends AppCompatActivity {
 
     TextView t;
 
+    //Instance of the database
+    private AndroidPOSDBHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +37,9 @@ public class BarcodeGenActivity extends AppCompatActivity {
 
         //Set the title
         setTitle(getString(R.string.barcode_gen_activity_title));
+
+        //Get instance of the DB
+        dbHelper = AndroidPOSDBHelper.getInstance(this);
 
         Button btn=(Button)findViewById(R.id.btn_create);
         btn.setOnClickListener( new Button.OnClickListener() {
@@ -61,8 +69,14 @@ public class BarcodeGenActivity extends AppCompatActivity {
         EditText e = (EditText)findViewById(R.id.etBarcode);
         String s = e.getText().toString();
         if( s == null || s.length() != 12 ) {
-            Toast.makeText(BarcodeGenActivity.this, "A barcode requires 12 numbers.", Toast.LENGTH_SHORT)
-                    .show();
+            Toast.makeText(BarcodeGenActivity.this, "A barcode requires 12 numbers.",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(dbHelper.exsists(s)) {
+            Toast.makeText(BarcodeGenActivity.this, "This barcode is already in use.",
+                    Toast.LENGTH_SHORT).show();
             return;
         }
 
