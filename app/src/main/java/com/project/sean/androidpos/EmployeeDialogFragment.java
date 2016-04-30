@@ -28,10 +28,10 @@ public class EmployeeDialogFragment extends DialogFragment {
     private AndroidPOSDBHelper dbHelper;
 
     //List of employee information
-    ArrayList<EmpInfo> listItems = new ArrayList<EmpInfo>();
+    private ArrayList<EmpInfo> listItems = new ArrayList<EmpInfo>();
 
     //ListView to display employee information
-    ListView mylist;
+    private ListView mylist;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

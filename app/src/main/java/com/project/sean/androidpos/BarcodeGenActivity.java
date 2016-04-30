@@ -25,7 +25,7 @@ import java.io.IOException;
  */
 public class BarcodeGenActivity extends AppCompatActivity {
 
-    TextView t;
+    private TextView t;
 
     //Instance of the database
     private AndroidPOSDBHelper dbHelper;

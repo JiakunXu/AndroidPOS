@@ -75,6 +75,10 @@
 
     <!-- Checkout Strings -->
     <string name="checkout_activity_title">Checkout</string>
+    <string name="shopping_cart">Shopping Cart</string>
+    <string name="total_price">Total Price</string>
+    <string name="activity_checkout_button_card">Card</string>
+    <string name="activity_checkout_button_cash">Cash</string>
 
     <!-- Stock Check Strings -->
     <string name="stock_check_activity_title">Check Stock</string>
