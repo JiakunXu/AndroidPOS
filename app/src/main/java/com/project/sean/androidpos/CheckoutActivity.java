@@ -242,7 +242,7 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
     }
 
     /**
-     * Confirm if you want to delete a user.
+     * Confirm if you want to empty the cart.
      */
     private void confirmEmptyCart() {
         if(!shoppingCart.getCartItems().isEmpty()) {
@@ -255,6 +255,7 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
                         public void onClick(DialogInterface dialog, int id) {
                             shoppingCart.clearCart();
                             mAdapter.notifyDataSetChanged();
+                            tvTotalPrice.setText(currencyOut(shoppingCart.getSubtotal()).toString());
                         }
                     })
                     .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -270,7 +271,7 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
     }
 
     /**
-     * Confirm if you want to delete a user.
+     * Confirm if you want to pay by cash.
      */
     private void confirmCashPayment() {
         if(!shoppingCart.getCartItems().isEmpty()) {
@@ -297,6 +298,9 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    /**
+     * Confirm if you want to pay by card.
+     */
     private void confirmCardPayment() {
         if(!shoppingCart.getCartItems().isEmpty()) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
