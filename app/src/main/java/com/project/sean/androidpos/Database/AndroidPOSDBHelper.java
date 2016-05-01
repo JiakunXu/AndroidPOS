@@ -196,6 +196,24 @@ public class AndroidPOSDBHelper extends SQLiteOpenHelper {
     }
 
     /**
+     * Gets the details of a stock item, specified by their stockId.
+     * Returns a Cursor object containing the details.
+     * @param stockId
+     * @return
+     */
+    public Cursor getStockDetails(String stockId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        //Cursor cursor = null;
+        String exists = "SELECT * FROM " + StockTable.TABLE_NAME +
+                " WHERE " + StockTable.COL_STOCKID + " = " + stockId;
+        Cursor cursor = db.rawQuery(exists, null);
+        if(cursor != null) {
+            cursor.moveToFirst();
+        }
+        return cursor;
+    }
+
+    /**
      * Might not use, has potential for retrieving data
      * @param stockName
      * @return

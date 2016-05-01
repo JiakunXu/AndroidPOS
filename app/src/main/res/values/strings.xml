@@ -76,9 +76,15 @@
     <!-- Checkout Strings -->
     <string name="checkout_activity_title">Checkout</string>
     <string name="shopping_cart">Shopping Cart</string>
-    <string name="total_price">Total Price</string>
+    <string name="total_price">Total Price (£):</string>
     <string name="activity_checkout_button_card">Card</string>
     <string name="activity_checkout_button_cash">Cash</string>
+    <string name="activity_checkout_edit_text_stockId">Enter the Stock ID here…</string>
+    <string-array name="checkoutMenu">
+        <item>Remove</item>
+        <item>Increase Qty.</item>
+        <item>Decrease Qty.</item>
+    </string-array>
 
     <!-- Stock Check Strings -->
     <string name="stock_check_activity_title">Check Stock</string>

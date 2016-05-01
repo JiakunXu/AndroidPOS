@@ -19,14 +19,16 @@
         <activity android:name=".LoginActivity">
         </activity>
 
-        <activity android:name=".CheckoutActivity">
+        <activity android:name=".CheckoutActivity"
+            android:windowSoftInputMode="stateHidden">>
         </activity>
 
         <activity android:name=".StockCheckActivity">
         </activity>
 
         <activity android:name=".StockManagementActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden">``
         </activity>
 
         <activity android:name=".EmpManagementActivity"
@@ -37,6 +39,9 @@
         </activity>
 
         <activity android:name=".SettingActivity">
+        </activity>
+
+        <activity android:name=".PurchasedItemsActivity">
         </activity>
 
     </application>

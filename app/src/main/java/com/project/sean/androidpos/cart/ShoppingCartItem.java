@@ -1,9 +1,11 @@
 package com.project.sean.androidpos.cart;
 
+import java.io.Serializable;
+
 /**
  * Created by Sean on 30/04/2016.
  */
-public class ShoppingCartItem
+public class ShoppingCartItem implements Serializable
 {
 
     private CartItem cartItem;
@@ -26,21 +28,21 @@ public class ShoppingCartItem
     //-----------------------------------------------------------------------
 
     /**
-     * Returns the current coffee selected.
-     * @return coffee - coffee product
+     * Returns the current stock item selected.
+     * @return cartItem - stock item
      */
     public CartItem getCartItem()
     {
         return cartItem;
-    }//End of method getCoffee
+    }//End of method getCartItem
 
 
     //-----------------------------------------------------------------------
 
 
     /**
-     * Returns the total quantity of a coffee product.
-     * @return quantity - total quantity of coffee
+     * Returns the total quantity of a stock item.
+     * @return quantity - total quantity of stock item
      */
     public int getQuantity()
     {
@@ -51,8 +53,8 @@ public class ShoppingCartItem
     //-----------------------------------------------------------------------
 
     /**
-     * Sets the quantity of coffee.
-     * @param quantity - quantity of coffee
+     * Sets the quantity of stock item.
+     * @param quantity - quantity of stock item
      */
     public void setQuantity(int quantity)
     {
@@ -63,7 +65,7 @@ public class ShoppingCartItem
     //-----------------------------------------------------------------------
 
     /**
-     * Increases the quantity of coffee by one.
+     * Increases the quantity of stock item by one.
      */
     public void increaseQuantity()
     {
@@ -74,7 +76,7 @@ public class ShoppingCartItem
     //-----------------------------------------------------------------------
 
     /**
-     * Decreases the quantity of coffee by one.
+     * Decreases the quantity of stock item by one.
      */
     public void decreaseQuantity()
     {
@@ -85,8 +87,8 @@ public class ShoppingCartItem
     //-----------------------------------------------------------------------
 
     /**
-     * Calculates the total cost of the current coffee product.
-     * @return amount - total cost of the coffee product
+     * Calculates the total cost of the current stock item.
+     * @return amount - total cost of the stock item
      */
     public int getTotal()
     {

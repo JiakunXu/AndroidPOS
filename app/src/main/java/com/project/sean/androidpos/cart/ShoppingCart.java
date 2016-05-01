@@ -16,7 +16,7 @@ import java.util.List;
 public class ShoppingCart implements Serializable
 {
 
-    private List<ShoppingCartItem> cartItemList;
+    private ArrayList<ShoppingCartItem> cartItemList;
     private int numberOfItems;
     private int total;
 
@@ -40,7 +40,7 @@ public class ShoppingCart implements Serializable
 
     /**
      * Adds a ShoppingCartItem to the ShoppingCart list. A ShoppingCartItem is
-     * the item the customer wishes to purchase. If the coffee being
+     * the item the customer wishes to purchase. If the item being
      * added is already in the list then it will instead increase the quantity
      * by one.
      * @param cartItem - the item being purchased
@@ -51,7 +51,7 @@ public class ShoppingCart implements Serializable
 
         for (ShoppingCartItem cartItems : cartItemList)
         {
-            if (cartItems.getCartItem().getStockName() == cartItem.getStockName())
+            if (cartItems.getCartItem().getStockId() == cartItem.getStockId())
             {
                 newItem = false;
                 cartItems.increaseQuantity();
@@ -119,7 +119,7 @@ public class ShoppingCart implements Serializable
      * Returns the list of ShoppingCartItems.
      * @return cartItems
      */
-    public List<ShoppingCartItem> getCartItems()
+    public ArrayList<ShoppingCartItem> getCartItems()
     {
         return cartItemList;
     }//End of method getCartItems

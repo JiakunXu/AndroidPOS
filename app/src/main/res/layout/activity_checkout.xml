@@ -17,7 +17,10 @@
         <EditText
             android:layout_width="263dp"
             android:layout_height="wrap_content"
-            android:id="@+id/editCheckoutStockId" />
+            android:id="@+id/editCheckoutStockId"
+            android:singleLine="true"
+            android:hint="@string/activity_checkout_edit_text_stockId"
+            android:imeOptions="actionSend"/>
 
         <Button
             android:layout_width="match_parent"
@@ -68,7 +71,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
             android:gravity="center"
-            android:text=""
             android:textStyle="bold"/>
     </LinearLayout>
 
