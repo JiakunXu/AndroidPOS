@@ -1,14 +1,19 @@
 package com.project.sean.androidpos;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.view.ContextMenu;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,8 +72,8 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
 
-        //Set the title
-        setTitle(getString(R.string.checkout_activity_title));
+//        //Set the title
+//        setTitle(getString(R.string.checkout_activity_title));
 
         //Get instance of the DB
         dbHelper = AndroidPOSDBHelper.getInstance(this);
@@ -80,12 +85,12 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
 
         lvCheckoutItems.addHeaderView(layoutInflater.inflate(R.layout.cart_header, lvCheckoutItems, false));
 
-        CartItem item = new CartItem("123456789012", "Bread", 100);
-        //.addItem() takes in a CartItem to add to the ArrayList<ShoppingCartItem> of ShoppingCart.
-        shoppingCart.addItem(item);
-
-        CartItem item2 = new CartItem("1234567890", "Chocolate", 100);
-        shoppingCart.addItem(item2);
+//        CartItem item = new CartItem("123456789012", "Bread", 100);
+//        //.addItem() takes in a CartItem to add to the ArrayList<ShoppingCartItem> of ShoppingCart.
+//        shoppingCart.addItem(item);
+//
+//        CartItem item2 = new CartItem("1234567890", "Chocolate", 100);
+//        shoppingCart.addItem(item2);
 
         //Create the array adapter for the shopping cart
         mAdapter = new CheckoutAdapter(this, R.layout.adapter_cart_item, shoppingCart.getCartItems());
@@ -135,6 +140,36 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_checkout, menu);
+        //Set the title
+        setTitle(getString(R.string.checkout_activity_title));
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+//            case R.id.action_settings:
+//                // User chose the "Settings" item, show the app settings UI...
+//                return true;
+
+            case R.id.action_empty_cart:
+                // User chose the "Favorite" action, mark the current item
+                // as a favorite...
+                confirmEmptyCart();
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
     public void onClick(View v) {
         switch(v.getId()) {
             case R.id.btCheckoutScan: {
@@ -144,12 +179,12 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
             }
             case R.id.bCash: {
                 //TO-DO add a way to pay by cash
-                cashPayment();
+                confirmCashPayment();
                 break;
             }
             case R.id.bCard: {
                 //TO-DO add a way to pay by card
-                cardPayment();
+                confirmCardPayment();
                 break;
             }
         }
@@ -191,13 +226,9 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         Cursor result = dbHelper.getStockDetails(stockId);
 
         CartItem newItem = new CartItem();
-//        newItem.setStockId(result.getString(0));
-//        newItem.setStockName(result.getString(1));
-//        newItem.setSalePrice(result.getInt(3));
-
-        newItem.setStockId("12345");
-        newItem.setStockName("Test Data");
-        newItem.setSalePrice(100);
+        newItem.setStockId(result.getString(0));
+        newItem.setStockName(result.getString(1));
+        newItem.setSalePrice(result.getInt(3));
 
         shoppingCart.addItem(newItem);
         ShoppingCartItem tempItem = new ShoppingCartItem(newItem);
@@ -208,6 +239,87 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
 
         tvTotalPrice.setText(currencyOut(shoppingCart.getSubtotal()).toString());
 //        result.close();
+    }
+
+    /**
+     * Confirm if you want to delete a user.
+     */
+    private void confirmEmptyCart() {
+        if(!shoppingCart.getCartItems().isEmpty()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            builder
+                    .setMessage("Empty the shopping cart?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            shoppingCart.clearCart();
+                            mAdapter.notifyDataSetChanged();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    })
+                    .show();
+        } else {
+            Toast.makeText(this, "Checkout is empty.", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    /**
+     * Confirm if you want to delete a user.
+     */
+    private void confirmCashPayment() {
+        if(!shoppingCart.getCartItems().isEmpty()) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+                builder
+                        .setMessage("Total is : £" + currencyOut(shoppingCart.getSubtotal()).toString()
+                                + ". Pay by cash?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                cashPayment();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        })
+                        .show();
+        } else {
+            Toast.makeText(this, "Checkout is empty.", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void confirmCardPayment() {
+        if(!shoppingCart.getCartItems().isEmpty()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+            builder
+                    .setMessage("Total is : £" + currencyOut(shoppingCart.getSubtotal()).toString()
+                            + ". Pay by cash?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            cardPayment();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    })
+                    .show();
+        } else {
+            Toast.makeText(this, "Checkout is empty.", Toast.LENGTH_LONG).show();
+        }
     }
 
     /**

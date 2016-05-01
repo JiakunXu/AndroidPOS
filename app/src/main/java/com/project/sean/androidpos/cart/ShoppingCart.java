@@ -51,7 +51,7 @@ public class ShoppingCart implements Serializable
 
         for (ShoppingCartItem cartItems : cartItemList)
         {
-            if (cartItems.getCartItem().getStockId() == cartItem.getStockId())
+            if (cartItems.getCartItem().getStockId().equals(cartItem.getStockId()))
             {
                 newItem = false;
                 cartItems.increaseQuantity();
