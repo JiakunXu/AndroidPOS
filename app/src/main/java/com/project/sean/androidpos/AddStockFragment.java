@@ -161,7 +161,7 @@ public class AddStockFragment extends Fragment implements View.OnClickListener {
 
                 boolean isInserted = dbHelper.insertStockData(stockInfo);
 
-                if(isInserted == true)  {
+                if(isInserted)  {
                     Toast.makeText(getActivity(), "Data inserted successfully!", Toast.LENGTH_LONG).show();
                     editStockID.getText().clear();
                     editStockName.getText().clear();

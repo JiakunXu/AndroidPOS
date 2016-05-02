@@ -228,7 +228,7 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         CartItem newItem = new CartItem();
         newItem.setStockId(result.getString(0));
         newItem.setStockName(result.getString(1));
-        newItem.setSalePrice(result.getInt(3));
+        newItem.setSalePrice(result.getInt(2));
 
         shoppingCart.addItem(newItem);
         ShoppingCartItem tempItem = new ShoppingCartItem(newItem);
