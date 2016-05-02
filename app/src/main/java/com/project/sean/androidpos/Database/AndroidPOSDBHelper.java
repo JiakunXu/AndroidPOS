@@ -46,6 +46,22 @@ public class AndroidPOSDBHelper extends SQLiteOpenHelper {
                     EmployeeTable.COL_CONTACT + " TEXT, " +
                     EmployeeTable.COL_PASSWORD + " TEXT)";
 
+    //Sale Table create query
+    public static final String SQL_CREATE_TABLE_SALE =
+            "CREATE TABLE " + SaleTable.TABLE_NAME + " (" +
+                    SaleTable.COL_SALEID + " INTEGER PRIMARY KEY, " +
+                    SaleTable.COL_EMPID + " INTEGER, " +
+                    SaleTable.COL_TOTAL_PRICE + " INTEGER, " +
+                    SaleTable.COL_SALE_TIME + " DATETIME DEFAULT CURRENT_TIMESTAMP)";
+
+    //StockSale Table create query
+    public static final String SQL_CREATE_TABLE_STOCK_SALE =
+            "CREATE TABLE " + StockSaleTable.TABLE_NAME + " (" +
+                    StockSaleTable.COL_STOCKSALE_ID + " INTEGER PRIMARY KEY, " +
+                    StockSaleTable.COL_SALE_ID + " INTEGER, " +
+                    StockSaleTable.COL_STOCK_ID + " TEXT, " +
+                    StockSaleTable.COL_QTY_SOLD + " INTEGER)";
+
     //Drop STOCK_INFO table query
     public static final String SQL_DELETE_STOCKTABLE =
             "DROP TABLE IF EXISTS " + StockTable.TABLE_NAME;
@@ -53,6 +69,14 @@ public class AndroidPOSDBHelper extends SQLiteOpenHelper {
     //Drop EMP_INFO table query
     public static final String SQL_DELETE_EMPTABLE =
             "DROP TABLE IF EXISTS " + EmployeeTable.TABLE_NAME;
+
+    //Drop SALE_INFO table query
+    public static final String SQL_DELETE_SALETABLE =
+            "DROP TABLE IF EXISTS " + SaleTable.TABLE_NAME;
+
+    //Drop STOCK_SALE table query
+    public static final String SQL_DELETE_STOCKSALETABLE =
+            "DROP TABLE IF EXISTS " + StockSaleTable.TABLE_NAME;
 
 
     /**
@@ -81,6 +105,8 @@ public class AndroidPOSDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_TABLE_STOCK);
         db.execSQL(SQL_CREATE_TABLE_EMP);
+        db.execSQL(SQL_CREATE_TABLE_SALE);
+        db.execSQL(SQL_CREATE_TABLE_STOCK_SALE);
 
         //Var1. Column name, Var2. Value
         ContentValues contentValues = new ContentValues();
@@ -99,6 +125,8 @@ public class AndroidPOSDBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //Drop all tables and data
+        db.execSQL(SQL_DELETE_STOCKSALETABLE);
+        db.execSQL(SQL_DELETE_SALETABLE);
         db.execSQL(SQL_DELETE_STOCKTABLE);
         db.execSQL(SQL_DELETE_EMPTABLE);
         //Recreate the tables
@@ -193,6 +221,38 @@ public class AndroidPOSDBHelper extends SQLiteOpenHelper {
         }
 
         return stockList;
+    }
+
+    /**
+     * Update an employees information.
+     */
+    public boolean updateStockInfo(StockInfo stockInfo)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        //Var 1. column name
+        //Var 2. value
+        contentValues.put(StockTable.COL_STOCKID, stockInfo.getStockId());
+        contentValues.put(StockTable.COL_STOCKNAME, stockInfo.getStockName());
+        contentValues.put(StockTable.COL_COSTPRICE, stockInfo.getCostPrice());
+        contentValues.put(StockTable.COL_SALEPRICE, stockInfo.getSalePrice());
+        contentValues.put(StockTable.COL_STOCKQTY, stockInfo.getStockQty());
+        contentValues.put(StockTable.COL_CATEGORY, stockInfo.getCategory());
+
+        String stock_id = "STOCK_ID = " + stockInfo.getStockId();
+        //Var 1. table name
+        //Var 2. content value
+        //Var 3. condition to pass - id = ?
+        //Var 4. String array of ids
+        long result = db.update(StockTable.TABLE_NAME, contentValues, stock_id, null);
+        if(result == 0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     /**
@@ -399,5 +459,14 @@ public class AndroidPOSDBHelper extends SQLiteOpenHelper {
         }
         return cursor;
     }
+
+//------------------------------Sale Table------------------------------
+
+    //Add Sale
+
+
+//------------------------------Stock Sale Table------------------------------
+
+    //Add Stock Sale
 
 }

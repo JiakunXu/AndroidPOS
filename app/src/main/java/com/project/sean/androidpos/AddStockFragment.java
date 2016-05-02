@@ -2,6 +2,7 @@ package com.project.sean.androidpos;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -29,6 +30,10 @@ public class AddStockFragment extends Fragment implements View.OnClickListener {
     private Button scanBtn;
     //Button to add stock item to the DB
     private Button addBtn;
+    //Button to get stock information from the DB
+    private Button button_get_stock;
+    //Button to update stock item in the DB
+    private Button button_stock_update;
 
     //EditText for user entry
     private EditText editStockID;
@@ -70,6 +75,8 @@ public class AddStockFragment extends Fragment implements View.OnClickListener {
         //Initialise Button
         scanBtn = (Button)rootView.findViewById(R.id.scan_button);
         addBtn = (Button)rootView.findViewById(R.id.button_add);
+        button_stock_update = (Button)rootView.findViewById(R.id.button_stock_update);
+        button_get_stock = (Button)rootView.findViewById(R.id.button_get_stock);
 
         //Initialise EditText
         editStockID = (EditText)rootView.findViewById(R.id.editStockID);
@@ -82,6 +89,8 @@ public class AddStockFragment extends Fragment implements View.OnClickListener {
         //Set button action listener
         scanBtn.setOnClickListener(this);
         addBtn.setOnClickListener(this);
+        button_stock_update.setOnClickListener(this);
+        button_get_stock.setOnClickListener(this);
 
 
         return rootView;
@@ -93,6 +102,12 @@ public class AddStockFragment extends Fragment implements View.OnClickListener {
         }
         if(v.getId()==R.id.button_add) {
             addData();
+        }
+        if(v.getId()==R.id.button_get_stock) {
+            getStockInfo();
+        }
+        if(v.getId()==R.id.button_stock_update) {
+            updateStockInfo();
         }
     }
 
@@ -126,14 +141,14 @@ public class AddStockFragment extends Fragment implements View.OnClickListener {
     }
 
     public void addData(){
-        if(isEmpty(editStockID) != true &&
-                isEmpty(editStockName) != true &&
-                isEmpty(editSalePrice) != true &&
-                isEmpty(editStockCost) != true &&
-                isEmpty(editStockQuantity) != true &&
-                isEmpty(editCategory) != true) {
+        if(!isEmpty(editStockID) &&
+                !isEmpty(editStockName) &&
+                !isEmpty(editSalePrice) &&
+                !isEmpty(editStockCost) &&
+                !isEmpty(editStockQuantity) &&
+                !isEmpty(editCategory)) {
 
-            if(dbHelper.exsists(editStockID.getText().toString()) != true) {
+            if(!dbHelper.exsists(editStockID.getText().toString())) {
 
                 StockInfo stockInfo = new StockInfo();
 
@@ -159,6 +174,77 @@ public class AddStockFragment extends Fragment implements View.OnClickListener {
                 }
             } else {
                 Toast.makeText(getActivity(), "Entry already exists.", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Toast.makeText(getActivity(), "All fields must be filled.", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    /**
+     * Get a selected stock items details and put them into the EditText fields.
+     */
+    public void getStockInfo() {
+        if(!isEmpty(editStockID)) {
+            if(dbHelper.exsists(editStockID.getText().toString())) {
+                Cursor result = dbHelper.getStockDetails(editStockID.getText().toString());
+
+                editStockID.setText(result.getString(0));
+                editStockName.setText(result.getString(1));
+                editSalePrice.setText(currencyOut(result.getInt(2)).toString());
+                editStockCost.setText(currencyOut(result.getInt(3)).toString());
+                editStockQuantity.setText(Integer.toString(result.getInt(4)));
+                editCategory.setText(result.getString(5));
+
+                Toast.makeText(getActivity(), "Stock Information details displayed.",
+                        Toast.LENGTH_SHORT).show();
+                result.close();
+            } else {
+                Toast.makeText(getActivity(), "Stock ID does not exist.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(getActivity(), "Stock ID required.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * Update a select stock items information.
+     */
+    public void updateStockInfo() {
+        if(!isEmpty(editStockID) &&
+                !isEmpty(editStockName) &&
+                !isEmpty(editSalePrice) &&
+                !isEmpty(editStockCost) &&
+                !isEmpty(editStockQuantity) &&
+                !isEmpty(editCategory)) {
+
+            if(dbHelper.exsists(editStockID.getText().toString())) {
+
+                StockInfo stockInfo = new StockInfo();
+
+                stockInfo.setStockId(editStockID.getText().toString());
+                stockInfo.setStockName(editStockName.getText().toString());
+                stockInfo.setSalePrice(currencyIn(editSalePrice.getText().toString()));
+                stockInfo.setCostPrice(currencyIn(editStockCost.getText().toString()));
+                stockInfo.setStockQty(Integer.parseInt(editStockQuantity.getText().toString()));
+                stockInfo.setCategory(editCategory.getText().toString());
+
+                boolean isUpdated = dbHelper.updateStockInfo(stockInfo);
+
+                if(isUpdated)  {
+                    Toast.makeText(getActivity(), "Stock ID: " + stockInfo.getStockId()
+                            +" updated successfully!", Toast.LENGTH_LONG).show();
+                    editStockID.getText().clear();
+                    editStockName.getText().clear();
+                    editSalePrice.getText().clear();
+                    editStockCost.getText().clear();
+                    editStockQuantity.getText().clear();
+                    editCategory.getText().clear();
+                } else {
+                    Toast.makeText(getActivity(), "Error, data not updated.", Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(getActivity(), "Stock ID does not exist.", Toast.LENGTH_LONG).show();
             }
         } else {
             Toast.makeText(getActivity(), "All fields must be filled.", Toast.LENGTH_LONG).show();
@@ -195,38 +281,9 @@ public class AddStockFragment extends Fragment implements View.OnClickListener {
     public BigDecimal currencyOut(int currency) {
         BigDecimal currencyBD = new BigDecimal(currency);
         currencyBD = currencyBD.divide(new BigDecimal("100"));
-
+        currencyBD = currencyBD.setScale(2);
         return currencyBD;
     }
-
-
-//    public void viewData(){
-//
-//            Cursor result = dbHelper.getallStockData();
-//            if (result.getCount() == 0) {
-//                //Show error message
-//                showMessage("Error", "No data found.");
-//                return;
-//            }
-//
-//            StringBuffer buffer = new StringBuffer();
-//            //Moves cursor to the next result
-//            //index 0 - ID
-//            //index 1 - Name
-//            //index 2 - Surname
-//            //index 3 - Marks
-//            while (result.moveToNext()) {
-//                buffer.append("Stock ID: " + result.getString(0) + "\n");
-//                buffer.append("Stock Name: " + result.getString(1) + "\n");
-//                buffer.append("Sale Price: " + currencyOut(result.getInt(2)) + "\n");
-//                buffer.append("Cost Price: " + currencyOut(result.getInt(3)) + "\n");
-//                buffer.append("Stock Qty: " + result.getInt(4) + "\n");
-//                buffer.append("Category: " + result.getString(5) + "\n");
-//            }
-//
-//            //Show all data
-//            showMessage("Product Information", buffer.toString());
-//    }
 
     /**
      * Used to create alert dialogue.

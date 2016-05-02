@@ -120,6 +120,10 @@
     <string name="listview_stock_level_stock_id">Stock ID:</string>
     <string name="listview_stock_level_stock_name">Name:</string>
     <string name="listview_stock_level_stock_qty">Stock Qty:</string>
+    <string-array name="stockLevelMenu">
+        <item>Increase Stock</item>
+        <item>Decrease Stock</item>
+    </string-array>
 
 
     <!-- New Strings -->

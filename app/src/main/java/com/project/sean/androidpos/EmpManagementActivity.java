@@ -246,7 +246,8 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
                 boolean isUpdated = dbHelper.updateData(empInfo);
 
                 if(isUpdated)  {
-                    Toast.makeText(this, "Employee No: " + empInfo.getEmpId() + " updated successfully!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Employee No: " + empInfo.getEmpId() +
+                            " updated successfully!", Toast.LENGTH_LONG).show();
                     editEmpId.getText().clear();
                     editEmpFName.getText().clear();
                     editEmpLName.getText().clear();
@@ -257,7 +258,7 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
                     Toast.makeText(this, "Error, data not inserted.", Toast.LENGTH_LONG).show();
                 }
             } else {
-                Toast.makeText(this, "Employee number already in use.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Employee number does not exist.", Toast.LENGTH_LONG).show();
             }
         } else {
             Toast.makeText(this, "All fields must be filled.", Toast.LENGTH_LONG).show();
@@ -285,13 +286,13 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
                 editContactNumber.setText(result.getString(4));
                 editPassword.setText(result.getString(5));
 
-                Toast.makeText(this, "Employee details displayed.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Employee details displayed.", Toast.LENGTH_SHORT).show();
                 result.close();
             } else {
-                Toast.makeText(this, "Employee ID does not exist.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Employee ID does not exist.", Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(this, "Employee ID required.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Employee ID required.", Toast.LENGTH_SHORT).show();
         }
     }
 

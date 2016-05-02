@@ -143,17 +143,31 @@
                 android:hint="@string/add_stock_fragment_stock_cat_hint"
                 android:singleLine="true" />
 
-            <LinearLayout
+        <Button
+            android:id="@+id/button_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_stock_fragment_button_add_item" />
+
+        <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.03">
+                android:weightSum="1">
 
                 <Button
-                    android:id="@+id/button_add"
+                    android:id="@+id/button_stock_update"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/add_stock_fragment_button_add_item" />
+                    android:text="Update"
+                    android:layout_weight="0.5"/>
+
+                <Button
+                    android:id="@+id/button_get_stock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Get Stock"
+                    android:layout_weight="0.5"/>
             </LinearLayout>
 
         </LinearLayout>

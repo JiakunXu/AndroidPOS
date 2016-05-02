@@ -40,4 +40,31 @@ public class POSDatabaseContract {
         public static final String COL_CONTACT = "CONTACT_NO";
         public static final String COL_PASSWORD = "PASSWORD";
     }
+
+    /**
+     *
+     */
+    public static abstract class SaleTable implements BaseColumns {
+        //Table name
+        public static final String TABLE_NAME = "SALE_INFO";
+        //Column names
+        public static final String COL_SALEID = "SALE_ID";
+        public static final String COL_EMPID = "EMP_ID";
+        public static final String COL_TOTAL_PRICE = "TOTAL_PRICE";
+        public static final String COL_SALE_TIME = "SALE_TIME";
+    }
+
+    /**
+     *
+     */
+    public static abstract class StockSaleTable implements BaseColumns {
+        //Table name
+        public static final String TABLE_NAME = "STOCK_SALE";
+        //Column names
+        public static final String COL_STOCKSALE_ID = "STOCK_SALE_ID";
+        public static final String COL_SALE_ID = "SALE_ID";
+        public static final String COL_STOCK_ID = "STOCK_ID";
+        public static final String COL_QTY_SOLD = "QTY_SOLD";
+
+    }
 }
