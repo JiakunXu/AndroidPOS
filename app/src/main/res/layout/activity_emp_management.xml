@@ -11,10 +11,10 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".AddStockFragment">
-        <!--android:weightSum="1">-->
+        tools:context=".EmpManagementActivity"
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/tvEmpID"
@@ -87,7 +87,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/emp_management_emp_lname_hint"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:layout_marginBottom="10dp"/>
 
         <TextView
             android:id="@+id/tvEmpRole"
@@ -95,14 +96,16 @@
             android:layout_height="wrap_content"
             android:text="@string/emp_management_emp_role"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/Black" />
+            android:textColor="@color/Black"
+            android:paddingBottom="4dp"/>
 
         <Spinner
             android:id="@+id/spinnerRole"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/empRole"
-            android:prompt="@string/emp_management_emp_role_hint"/>
+            android:prompt="@string/emp_management_emp_role_hint"
+            android:paddingBottom="10dp"/>
 
         <TextView
             android:id="@+id/tvEmpContact"
@@ -185,8 +188,7 @@
             android:id="@+id/button_view_emp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/emp_management_button_view_all"
-            android:layout_marginBottom="10dp"/>
+            android:text="@string/emp_management_button_view_all" />
 
     </LinearLayout>
 

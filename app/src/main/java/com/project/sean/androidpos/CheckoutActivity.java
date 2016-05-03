@@ -307,7 +307,7 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
 
             builder
                     .setMessage("Total is : £" + currencyOut(shoppingCart.getSubtotal()).toString()
-                            + ". Pay by cash?")
+                            + ". Pay by card?")
                     .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int id) {
