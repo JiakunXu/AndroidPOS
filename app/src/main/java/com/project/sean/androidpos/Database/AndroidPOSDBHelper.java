@@ -295,6 +295,20 @@ public class AndroidPOSDBHelper extends SQLiteOpenHelper {
         return mCursor;
     }
 
+    /**
+     * Deletes an employees information, returns 0 if nothing is deleted.
+     * @param stockId
+     * @return
+     */
+    public Integer deleteStockInfo(String stockId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String stock_id = "STOCK_ID = " + stockId;
+        //Var 1. table name
+        //Var 2. where clause, asks for the emp ID
+        //Var 3. String
+        return db.delete(StockTable.TABLE_NAME, stock_id, null);
+    }
+
 //------------------------------Employee Table------------------------------
 
     /**

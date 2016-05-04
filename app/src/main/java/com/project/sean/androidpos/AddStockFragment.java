@@ -1,6 +1,7 @@
 package com.project.sean.androidpos;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -34,6 +35,8 @@ public class AddStockFragment extends Fragment implements View.OnClickListener {
     private Button button_get_stock;
     //Button to update stock item in the DB
     private Button button_stock_update;
+    //Button to delete stock item from the DB
+    private Button button_delete_stock;
 
     //EditText for user entry
     private EditText editStockID;
@@ -77,6 +80,7 @@ public class AddStockFragment extends Fragment implements View.OnClickListener {
         addBtn = (Button)rootView.findViewById(R.id.button_add);
         button_stock_update = (Button)rootView.findViewById(R.id.button_stock_update);
         button_get_stock = (Button)rootView.findViewById(R.id.button_get_stock);
+        button_delete_stock = (Button)rootView.findViewById(R.id.button_delete_stock);
 
         //Initialise EditText
         editStockID = (EditText)rootView.findViewById(R.id.editStockID);
@@ -91,6 +95,7 @@ public class AddStockFragment extends Fragment implements View.OnClickListener {
         addBtn.setOnClickListener(this);
         button_stock_update.setOnClickListener(this);
         button_get_stock.setOnClickListener(this);
+        button_delete_stock.setOnClickListener(this);
 
 
         return rootView;
@@ -108,6 +113,9 @@ public class AddStockFragment extends Fragment implements View.OnClickListener {
         }
         if(v.getId()==R.id.button_stock_update) {
             updateStockInfo();
+        }
+        if(v.getId()==R.id.button_delete_stock) {
+            confirmDeleteDialog();
         }
     }
 
@@ -140,6 +148,10 @@ public class AddStockFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    /**
+     * Adds a new stock item to the database if all fields are filled in and the item does
+     * not already exist.
+     */
     public void addData(){
         if(!isEmpty(editStockID) &&
                 !isEmpty(editStockName) &&
@@ -248,6 +260,60 @@ public class AddStockFragment extends Fragment implements View.OnClickListener {
             }
         } else {
             Toast.makeText(getActivity(), "All fields must be filled.", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    /**
+     * AlertDialog to check if the user wants to delete the stock item selected.
+     */
+    public void confirmDeleteDialog() {
+        if(!isEmpty(editStockID)) {
+            if(dbHelper.exsists(editStockID.getText().toString())) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+                builder
+                        .setMessage("Are you sure you want to delete Stock ID: "
+                                + editStockID.getText().toString() + "?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                deleteStockInfo();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        })
+                        .show();
+            } else {
+                Toast.makeText(getActivity(), "Stock ID does not exist.", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Toast.makeText(getActivity(), "Stock ID must be specified.", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    /**
+     * Deletes the selected stock item from the database, returning an integer greater than 0
+     * if a deletion is successful.
+     */
+    public void deleteStockInfo() {
+        String stockId = editStockID.getText().toString();
+        Integer deleteRows = dbHelper.deleteStockInfo(stockId);
+        editStockID.getText().clear();
+        editStockName.getText().clear();
+        editSalePrice.getText().clear();
+        editStockCost.getText().clear();
+        editStockQuantity.getText().clear();
+        editCategory.getText().clear();
+        if(deleteRows > 0) {
+            Toast.makeText(getActivity(), "Stock: " + stockId + " deleted successfully.",
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity(), "Stock: " + stockId + " was not deleted.",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 

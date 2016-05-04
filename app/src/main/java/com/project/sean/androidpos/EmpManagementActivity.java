@@ -136,7 +136,7 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
                 boolean isInserted = dbHelper.insertEmpData(empInfo);
 
                 if(isInserted)  {
-                    Toast.makeText(this, "Data inserted successfully!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Data inserted successfully!", Toast.LENGTH_SHORT).show();
                     editEmpId.getText().clear();
                     editEmpFName.getText().clear();
                     editEmpLName.getText().clear();
@@ -144,13 +144,13 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
                     editContactNumber.getText().clear();
                     editPassword.getText().clear();
                 } else {
-                    Toast.makeText(this, "Error, data not inserted.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Error, data not inserted.", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(this, "Employee number already in use.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Employee number already in use.", Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(this, "All fields must be filled.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "All fields must be filled.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -173,16 +173,25 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
         dialog.show(manager, "dialog");
     }
 
+    /**
+     * Deletes the selected employee from the database, returning an integer greater than 0
+     * if a deletion is successful.
+     */
     public void deleteEmpInfo() {
         int empId = Integer.parseInt(editEmpId.getText().toString());
         Integer deletedRows = dbHelper.deleteEmpInfo(empId);
         editEmpId.getText().clear();
+        editEmpFName.getText().clear();
+        editEmpLName.getText().clear();
+        spinnerRole.setSelection(0);
+        editContactNumber.getText().clear();
+        editPassword.getText().clear();
         if (deletedRows > 0) {
             Toast.makeText(EmpManagementActivity.this,
-                    "Employee: " + empId + " deleted successfully.", Toast.LENGTH_LONG).show();
+                    "Employee: " + empId + " deleted successfully.", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(EmpManagementActivity.this,
-                    "Employee: " + empId + " was not deleted.", Toast.LENGTH_LONG).show();
+                    "Employee: " + empId + " was not deleted.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -211,10 +220,10 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
                         })
                         .show();
             } else {
-                Toast.makeText(this, "Employee ID does not exist.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Employee ID does not exist.", Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(this, "Employee ID required.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Employee ID required.", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -247,7 +256,7 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
 
                 if(isUpdated)  {
                     Toast.makeText(this, "Employee No: " + empInfo.getEmpId() +
-                            " updated successfully!", Toast.LENGTH_LONG).show();
+                            " updated successfully!", Toast.LENGTH_SHORT).show();
                     editEmpId.getText().clear();
                     editEmpFName.getText().clear();
                     editEmpLName.getText().clear();
@@ -255,13 +264,13 @@ public class EmpManagementActivity extends AppCompatActivity implements View.OnC
                     editContactNumber.getText().clear();
                     editPassword.getText().clear();
                 } else {
-                    Toast.makeText(this, "Error, data not inserted.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, "Error, data not inserted.", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(this, "Employee number does not exist.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Employee number does not exist.", Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(this, "All fields must be filled.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "All fields must be filled.", Toast.LENGTH_SHORT).show();
         }
     }
 
