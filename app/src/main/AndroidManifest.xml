@@ -28,7 +28,7 @@
 
         <activity android:name=".StockManagementActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden">``
+            android:windowSoftInputMode="stateHidden">
         </activity>
 
         <activity android:name=".EmpManagementActivity"
@@ -42,6 +42,10 @@
         </activity>
 
         <activity android:name=".PurchasedItemsActivity">
+        </activity>
+
+        <activity android:name=".ReturnItemActivity"
+            android:windowSoftInputMode="stateHidden">
         </activity>
 
     </application>

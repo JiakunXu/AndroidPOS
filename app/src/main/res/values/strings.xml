@@ -125,6 +125,11 @@
         <item>Decrease Stock</item>
     </string-array>
 
+    <!-- Return Item Strings -->
+    <string name="return_item_activity_title">Return Item</string>
+    <string name="edit_return_sale_id_hint">Enter Sale ID here…</string>
+    <string name="textview_return_sale_id">Sale ID:</string>
+
 
     <!-- New Strings -->
 

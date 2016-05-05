@@ -152,9 +152,10 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-//            case R.id.action_settings:
-//                // User chose the "Settings" item, show the app settings UI...
-//                return true;
+            case R.id.action_return_item:
+                Intent intent = new Intent(CheckoutActivity.this, ReturnItemActivity.class);
+                startActivity(intent);
+                return true;
 
             case R.id.action_empty_cart:
                 // User chose the "Favorite" action, mark the current item
