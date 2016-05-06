@@ -1,56 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
 
-    <TextView
-        android:id="@+id/tvBarcodeTitle"
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:paddingLeft="1dp"
-        android:textColor="#000000"
-        android:text="@string/barcode_gen_tv_ean_code" />
-
-    <EditText
-        android:id ="@+id/etBarcode"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:typeface="serif"
-        android:maxLength="12"
-        android:inputType="number"
-        android:hint="@string/barcode_gen_edit_barcode_hint" />
-
-    <Button
-        android:id="@+id/btn_create"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/barcode_gen_button_create_barcode" />
-
-    <Button
-        android:id="@+id/btn_image"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/barcode_gen_button_save_image" />
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp">
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/barcode"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvBarcodeTitle"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="130sp"
-            android:padding="5sp"
-            android:background="#FFFFFF"
-            android:textColor="#000000"
-            android:text=""
-            android:layout_gravity="center"/>
+            android:paddingLeft="1dp"
+            android:paddingTop="5dp"
+            android:text="@string/barcode_gen_tv_ean_code"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/etBarcode"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/barcode_gen_edit_barcode_hint"
+            android:inputType="number"
+            android:maxLength="12"
+            android:typeface="serif" />
+
+        <Button
+            android:id="@+id/btn_create"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/barcode_gen_button_create_barcode" />
+
+        <Button
+            android:id="@+id/btn_image"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/barcode_gen_button_save_image" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/barcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#FFFFFF"
+                android:padding="5sp"
+                android:text=""
+                android:textColor="#000000"
+                android:textSize="130sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

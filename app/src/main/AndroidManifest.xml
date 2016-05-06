@@ -35,7 +35,8 @@
             android:windowSoftInputMode="stateHidden">
         </activity>
 
-        <activity android:name=".BarcodeGenActivity">
+        <activity android:name=".BarcodeGenActivity"
+            android:windowSoftInputMode="stateHidden">
         </activity>
 
         <activity android:name=".SettingActivity">
