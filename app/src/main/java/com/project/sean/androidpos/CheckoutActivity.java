@@ -85,13 +85,6 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
 
         lvCheckoutItems.addHeaderView(layoutInflater.inflate(R.layout.cart_header, lvCheckoutItems, false));
 
-//        CartItem item = new CartItem("123456789012", "Bread", 100);
-//        //.addItem() takes in a CartItem to add to the ArrayList<ShoppingCartItem> of ShoppingCart.
-//        shoppingCart.addItem(item);
-//
-//        CartItem item2 = new CartItem("1234567890", "Chocolate", 100);
-//        shoppingCart.addItem(item2);
-
         //Create the array adapter for the shopping cart
         mAdapter = new CheckoutAdapter(this, R.layout.adapter_cart_item, shoppingCart.getCartItems());
 
@@ -125,7 +118,6 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
                     if(dbHelper.exsists(v.getText().toString())){
                         //TO-DO add a connection to the database
                         addItemToCart(v.getText().toString());
-                        Toast.makeText(CheckoutActivity.this, v.getText(), Toast.LENGTH_SHORT).show();
                         editCheckoutStockId.getText().clear();
                     } else {
                         Toast.makeText(CheckoutActivity.this, "No stock item found for ID: " + v.getText(),
@@ -458,17 +450,17 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         return true;
     }
 
-    public void increaseQty() {
-
-    }
-
-    public void decreaseQty() {
-
-    }
-
-    public void removeFromCart() {
-
-    }
+//    public void increaseQty() {
+//
+//    }
+//
+//    public void decreaseQty() {
+//
+//    }
+//
+//    public void removeFromCart() {
+//
+//    }
 
     /**
      * Converts the currency from pounds into pence.
