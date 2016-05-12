@@ -72,8 +72,6 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
 
-//        //Set the title
-//        setTitle(getString(R.string.checkout_activity_title));
 
         //Get instance of the DB
         dbHelper = AndroidPOSDBHelper.getInstance(this);
@@ -225,13 +223,13 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
 
         shoppingCart.addItem(newItem);
         ShoppingCartItem tempItem = new ShoppingCartItem(newItem);
-//        mAdapter.add(tempItem);
+        //mAdapter.add(tempItem);
         //working solution
         mAdapter.stockList.add(tempItem);
         mAdapter.notifyDataSetChanged();
 
         tvTotalPrice.setText(currencyOut(shoppingCart.getSubtotal()).toString());
-//        result.close();
+        //result.close();
     }
 
     /**
@@ -486,3 +484,4 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         return currencyBD;
     }
 }
+
