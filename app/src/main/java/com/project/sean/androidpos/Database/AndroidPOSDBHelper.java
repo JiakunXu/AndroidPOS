@@ -476,11 +476,56 @@ public class AndroidPOSDBHelper extends SQLiteOpenHelper {
 
 //------------------------------Sale Table------------------------------
 
-    //Add Sale
+    /**
+     * Inserts a new sale record into the database, returns -1 if data is not inserted,
+     * otherwise returns the row ID for the newly inserted row.
+     * @param saleInfo
+     * @return
+     */
+    public long insertSaleData(SaleInfo saleInfo) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        //Var1. Column name, Var2. Value
+        contentValues.put(SaleTable.COL_EMPID, saleInfo.getEmpID());
+        contentValues.put(SaleTable.COL_TOTAL_PRICE, saleInfo.getTotalPrice());
+
+        //Var1. Table name, Var2. , Var3. ContentValues to be input
+        //Returns -1 if data is not inserted
+        //Returns row ID of newly inserted row if successful
+        long result = db.insert(SaleTable.TABLE_NAME, null, contentValues);
+
+        return result;
+    }
 
 
 //------------------------------Stock Sale Table------------------------------
 
-    //Add Stock Sale
+    /**
+     * Inserts a new sale record into the database, returns -1 if data is not inserted,
+     * otherwise returns the row ID for the newly inserted row.
+     * @param stockSale
+     * @return
+     */
+    public boolean insertStockSaleData(StockSale stockSale) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        //Var1. Column name, Var2. Value
+        contentValues.put(StockSaleTable.COL_SALE_ID, stockSale.getSaleID());
+        contentValues.put(StockSaleTable.COL_STOCK_ID, stockSale.getStockID());
+        contentValues.put(StockSaleTable.COL_QTY_SOLD, stockSale.getQtySold());
+
+
+        //Var1. Table name, Var2. , Var3. ContentValues to be input
+        //Returns -1 if data is not inserted
+        //Returns row ID of newly inserted row if successful
+        long result = db.insert(StockSaleTable.TABLE_NAME, null, contentValues);
+        if(result == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 }

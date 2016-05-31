@@ -38,6 +38,8 @@ public class UserSessionManager {
     // Users role (make variable public to access from outside)
     public static final String KEY_ROLE = "role";
 
+    public static final String KEY_EMPID = "emp_id";
+
     // Constructor
     public UserSessionManager(Context context){
         this._context = context;
@@ -46,15 +48,18 @@ public class UserSessionManager {
     }
 
     //Create login session
-    public void createUserLoginSession(String name, String role){
+    public void createUserLoginSession(String name, String role, String empId){
         // Storing login value as TRUE
         editor.putBoolean(IS_USER_LOGIN, true);
 
         // Storing name in pref
         editor.putString(KEY_NAME, name);
 
-        // Storing email in pref
+        // Storing role in pref
         editor.putString(KEY_ROLE, role);
+
+        //Storing emp ID in pref
+        editor.putString(KEY_EMPID, empId);
 
         // commit changes
         editor.commit();
@@ -99,8 +104,11 @@ public class UserSessionManager {
         // user name
         user.put(KEY_NAME, pref.getString(KEY_NAME, null));
 
-        // user email id
+        // user role
         user.put(KEY_ROLE, pref.getString(KEY_ROLE, null));
+
+        // user emp id
+        user.put(KEY_EMPID, pref.getString(KEY_EMPID, null));
 
         // return user
         return user;

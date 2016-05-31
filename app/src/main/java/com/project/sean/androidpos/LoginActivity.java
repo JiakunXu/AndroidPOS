@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                     // and role="Manager"
                     //Add information retrieved from database
                     session.createUserLoginSession(firstName,
-                            role);
+                            role, String.valueOf(empId));
 
                     //Reset the EditText fields
                     editPassword.getText().clear();

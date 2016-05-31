@@ -29,6 +29,8 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.project.sean.androidpos.Database.AndroidPOSDBHelper;
+import com.project.sean.androidpos.Database.SaleInfo;
+import com.project.sean.androidpos.Database.StockSale;
 import com.project.sean.androidpos.cart.CartItem;
 import com.project.sean.androidpos.cart.ShoppingCart;
 import com.project.sean.androidpos.cart.ShoppingCartItem;
@@ -36,6 +38,7 @@ import com.project.sean.androidpos.cart.ShoppingCartItem;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * This activity deals with the buying of goods from the shop.
@@ -44,6 +47,9 @@ import java.util.ArrayList;
 public class CheckoutActivity extends AppCompatActivity implements View.OnClickListener {
     //Instance of the database
     private AndroidPOSDBHelper dbHelper;
+
+    // User Session Manager Class
+    UserSessionManager session;
 
     private CheckoutAdapter mAdapter;
 
@@ -66,12 +72,20 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
     //TextView of total
     private TextView tvTotalPrice;
 
+    private int currentEmpId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
 
+        session = new UserSessionManager(getApplicationContext());
+
+        // get user data from session
+        HashMap<String, String> user = session.getUserDetails();
+
+        currentEmpId = Integer.parseInt(user.get(UserSessionManager.KEY_EMPID));
 
         //Get instance of the DB
         dbHelper = AndroidPOSDBHelper.getInstance(this);
@@ -321,11 +335,33 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
      * Makes a cash payment, storing the sale in the database.
      */
     public void cashPayment() {
-        Intent intent = new Intent(CheckoutActivity.this, PurchasedItemsActivity.class);
-        intent.putExtra("ArrayList", shoppingCart);
-        intent.putExtra("Payment", "Cash");
-        startActivity(intent);
-        finish();
+        SaleInfo saleInfo = new SaleInfo();
+        saleInfo.setEmpID(currentEmpId);
+        saleInfo.setTotalPrice(shoppingCart.getSubtotal());
+        System.out.print(shoppingCart.getSubtotal());
+        long saleResult = dbHelper.insertSaleData(saleInfo);
+        int currentSaleId = (int) saleResult;
+        if(saleResult == -1) {
+            Toast.makeText(this, "Sale not processed, try again.", Toast.LENGTH_LONG).show();
+        } else {
+            ArrayList<ShoppingCartItem> tempStock = shoppingCart.getCartItems();
+            for(ShoppingCartItem cartItems : tempStock) {
+                StockSale stockSale = new StockSale();
+                stockSale.setSaleID(currentSaleId);
+                stockSale.setStockID(cartItems.getCartItem().getStockId());
+                stockSale.setQtySold(cartItems.getQuantity());
+                boolean stockSaleResult = dbHelper.insertStockSaleData(stockSale);
+                if(!stockSaleResult) {
+                    Toast.makeText(this, "Error in stock information, please try again.", Toast.LENGTH_LONG).show();
+                    break;
+                }
+            }
+            Intent intent = new Intent(CheckoutActivity.this, PurchasedItemsActivity.class);
+            intent.putExtra("ArrayList", shoppingCart);
+            intent.putExtra("Payment", "Cash");
+            startActivity(intent);
+            finish();
+        }
     }
 
     /**
